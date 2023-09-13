@@ -1,0 +1,30 @@
+body{
+    background-image: url(img/background.png);
+}
+
+#navbar{
+    opacity: 75%;
+}
+
+.img-cuerpo{
+    display: flex;
+    margin-top: 100px;
+    justify-content: center;
+
+}
+
+.cont-cuerpo{
+    display: flex;
+    justify-content: center;
+}
+
+.nosotros{
+    display: flex;
+    justify-content: center;
+}
+
+#empecemos{
+    display: flex;
+    justify-content: center;
+}
+
