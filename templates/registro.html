@@ -1,3 +1,11 @@
+{%with messages=get_flashed_messages()%}
+{%if messages%}
+{%for message in messages%}
+<h2>{{message}}</h2>
+{%endfor%}
+{%endif%}
+{%endwith%}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,7 +19,7 @@
         <h1>Formulario de registro</h1>
     </header>
     <main>
-        <form action="">
+        <form action="/registro" method="POST">
         <div class="row">
             
             <div class="col-lg-6">
@@ -19,7 +27,7 @@
                 <!-- Campo de tipo de documento -->
                 <label for="tipodocumento">Tipo de documento:</label>
                 <br>
-                <select class="form-select" aria-label="Default select example">
+                <select class="form-select" aria-label="Default select example" name="documento">
                     <option selected>Selecciona una opción</option>
                     <option value="1">Cédula de ciudadania</option>
                     <option value="2">Tarjeta de identidad</option>
@@ -51,7 +59,6 @@
                 <!-- Campo de Telefonos -->
                 <label>Telefonos:</label>
                 <input type="text" id="telefono_celular" name="telefono_celular">
-                <input type="text" id="telefono_fijo" name="telefono_fijo">
             </div>
             <div class="col-lg-6">
                 <!-- Campo apellidos -->
@@ -60,6 +67,7 @@
                 <br>
             </div>   
         </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </main>
 </body>
