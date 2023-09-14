@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="{{url_for ('static', filename='css/index.css')}}">
     <title>Inicio</title>
 </head>
 <body>
@@ -13,7 +13,7 @@
         <nav class="navbar bg-body-dark" id="navbar">
             <div class="container">
               <a class="navbar-brand" href="#">
-                <img src="img/Logo.png" alt="logo">
+                <img src="{{url_for ('static', filename='img/logo.png')}}" alt="logo">
               </a>
     
                 <button class="btn btn-outline-secondary" id="ingreso" type="submit">Ingreso</button>
@@ -24,7 +24,7 @@
 
     <main>
         <div class="img-cuerpo">
-            <img src="img/principalicon.png" alt="">
+            <img src="{{url_for ('static', filename='img/principalicon.png')}}" alt="">
         </div>
 
         <h2 class="cont-cuerpo">¡Bienvenido a nuestra plataforma Participación ciudadana!</h2>
