@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+</head>
+<body>
+    <header>
+        <img src="{{url_for ('static', filename='img/logo.png')}}" alt="logo">
+        <h1>Formulario de registro</h1>
+    </header>
+    <main>
+        <form action="">
+        <div class="row">
+            
+            <div class="col-lg-6">
+                <!-- Todos los campos son obligatorios -->
+                <!-- Campo de tipo de documento -->
+                <label for="tipodocumento">Tipo de documento:</label>
+                <br>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Selecciona una opción</option>
+                    <option value="1">Cédula de ciudadania</option>
+                    <option value="2">Tarjeta de identidad</option>
+                    <option value="3">Pasaporte</option>
+                    <option value="4">Otro</option>
+                </select>
+                <br>
+
+                <!-- Campo de nombres -->
+                <label>Nombres:</label>
+                <input type="text" id="nombres" name="nombres" required>
+                <br>
+
+                <!-- Campo sexo -->
+                <label>Sexo:</label>
+                <input type="radio" id="sexo_masculino" name="sexo" value="Masculino" required>
+                <label for="sexo_masculino">Masculino</label>
+                <input type="radio" id="sexo_femenino" name="sexo" value="Femenino" required>
+                <label for="sexo_femenino">Femenino</label>
+                <input type="radio" id="sexo_otro" name="sexo" value="Otro" required>
+                <label for="sexo_otro">Otro</label>
+                <br>
+
+                <!-- Campo fecha de nacimiento -->
+                <label for="fecha_nacimiento">Fecha de Nacimiento:</label>
+                <input type="date" id="fecha_nacimiento" name="fecha_nacimiento" required>
+                <br>
+
+                <!-- Campo de Telefonos -->
+                <label>Telefonos:</label>
+                <input type="text" id="telefono_celular" name="telefono_celular">
+                <input type="text" id="telefono_fijo" name="telefono_fijo">
+            </div>
+            <div class="col-lg-6">
+                <!-- Campo apellidos -->
+                <label for="apellidos">Apellidos:</label>
+                <input type="text" id="apellidos" name="apellidos" required>
+                <br>
+            </div>   
+        </div>
+        </form>
+    </main>
+</body>
+</html>

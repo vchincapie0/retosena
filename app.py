@@ -10,7 +10,7 @@ def index():
 @app.route('/registro')
 def registro():
     '''Funcion para el registro de ciudadanos'''
-    return 'Aqui se van a registrar los ciudadanos'
+    return render_template('registro.html')
 
 @app.route('/login')
 def login():
