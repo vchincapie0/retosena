@@ -1,12 +1,3 @@
-<!-- Mensaje de ciudadano registrado -->
-{%with messages=get_flashed_messages()%}
-{%if messages%}
-{%for message in messages%}      
-<h2>{{message}}</h2>
-{%endfor%}
-{%endif%}
-{%endwith%}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,12 +22,11 @@
                 <!-- Campo de tipo de documento -->
                 <label for="tipodocumento">Tipo de documento:</label>
                 <br>
-                <select id="tipo_documento" name="Tipo de documento">
+                <select id="tipo_documento" name="TipoDocumento">
                     <option selected>Selecciona una opción</option>
-                    <option value="cedula">Cédula de ciudadania</option>
-                    <option value="tarjeta">Tarjeta de identidad</option>
-                    <option value="pasaporte">Pasaporte</option>
-                    <option value="otro">Otro</option>
+                    <option value="Cédula ciudadanía">Cédula de ciudadanía</option>
+                    <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                    <option value="Cédula Extranjería">Cédula Extranjería</option>
                 </select>
 
                 <!-- Campo de nombres -->
@@ -47,11 +37,15 @@
                 <!-- Campo sexo -->
                 <label>Sexo:</label>
                 <br>
-                <input type="radio" id="sexo_masculino" name="sexo" value="Masculino" required>
+                <input type="radio" id="sexo_masculino" name="sexo" value="Hombre" required>
                 <label for="sexo_masculino">Masculino</label>
-                <input type="radio" id="sexo_femenino" name="sexo" value="Femenino" required>
+                <input type="radio" id="sexo_femenino" name="sexo" value="Mujer" required>
                 <label for="sexo_femenino">Femenino</label>
-                <input type="radio" id="sexo_otro" name="sexo" value="Otro" required>
+                <input type="radio" id="sexo_intersexual" name="sexo" value="Intersexual" required>
+                <label for="sexo_otro">Intersexual</label>
+                <input type="radio" id="sexo_indefinido" name="sexo" value="Indefinido" required>
+                <label for="sexo_otro">Indefinido</label>
+                <input type="radio" id="sexo_otro" name="sexo" value="otro" required>
                 <label for="sexo_otro">Otro</label>
                 <br>
 
@@ -71,13 +65,13 @@
                 <!-- Nivel educativo -->
                 <label for="nivel_educativo">Nivel Educativo:</label>
                 <br>
-                <input type="text" id="nivel_educativo" name="nivel_educativo" placeholder="Ej: Bachillerato" readonly>
+                <input type="text" id="nivel_educativo" name="nivel_educativo" placeholder="Ej: Bachillerato" required>
                 <br>
 
                 <!-- Conectividad a internet -->
                 <label>¿Tiene Conectividad a Internet?</label>
                 <br>
-                <input type="radio" id="conectividad_internet_si" name="conectividad_internet" value="Sí" required>
+                <input type="radio" id="conectividad_internet_si" name="conectividad_internet" value="Si" required>
                 <label for="conectividad_internet_si">Sí</label>
                 <input type="radio" id="conectividad_internet_no" name="conectividad_internet" value="No" required>
                 <label for="conectividad_internet_no">No</label>
@@ -99,11 +93,11 @@
                 <br>
                 <select id="etnia" name="etnia">
                     <option selected>Selecciona una opción</option>
-                    <option value="1">Indigena</option>
-                    <option value="2">Afrodesendiente</option>
-                    <option value="3">Mestizo</option>
-                    <option value="4">Blanco</option>
-                    <option value="5">Otro</option>
+                    <option value="Indigena">Indígena</option>
+                    <option value="Afrodesendiente">Afrodesendiente</option>
+                    <option value="Mestizo">Mestizo</option>
+                    <option value="Caucasico">Caucásico</option>
+                    <option value="Otro">Otro</option>
                 </select>
                 <br>
                 <!--Condicion de discapacidad -->
@@ -140,7 +134,6 @@
                     <option selected>Selecciona una opción</option>
                     <option value="Contributivo">Contributivo</option>
                     <option value="Subsidiado">Subsidiado</option>
-                    <option value="Especial">Especial</option>
                 </select>
             </div> 
         </div>
@@ -167,7 +160,7 @@
                 <!-- Campo del estrato -->
                 <label for="estrato_residencia">Estrato de Residencia:</label>
                 <br>
-                <input type="number" id="estrato_residencia" name="estrato_residencia" placeholder="Ej: 1 2 3 ..." required>
+                <input type="number" id="estrato_residencia" name="estrato_residencia" placeholder="Ej: 1 2 3 ..." required max="7" min="1">
                 <br>
             </div>
         </div>
@@ -181,7 +174,7 @@
             <div class="col-lg-6">
                 <label for="password">Contraseña:</label>
                 <br>
-                <input type="password" id="contraseña" name="contraseña"placeholder="Digite su contraseña" required>
+                <input type="password" id="contraseña" name="contrasenia"placeholder="Digite su contraseña" minlength="6" maxlength="10" required>
                 <br>
             </div>
         </div>
