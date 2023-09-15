@@ -7,7 +7,7 @@ app = Flask(__name__)#Se especifica que este archivo es el que va a iniciar la w
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
 app.config['MYSQL_PASSWORD']=''
-app.config['MYSQL_DB']='pruebaproyecto'
+app.config['MYSQL_DB']='partciudadana'
 mysql=MySQL(app)
 
 '''Settings'''
@@ -22,14 +22,30 @@ def index():
 def registro():
     '''Funcion para el registro de ciudadanos'''
     if request.method == 'POST':
-        documento = request.form['documento']
+        tipodocumento = request.form['TipoDocumento']
+        documento = request.form['numero_documento']
         nombres = request.form['nombres']
+        apellidos = request.form['apellidos']
         sexo = request.form['sexo']
+        etnia = request.form['etnia']
         fechanacimiento= request.form['fecha_nacimiento']
-        telefono= request.form['telefono_celular']
-        apellidos=request.form['apellidos']
+        telefonoCelular= request.form['telefono_celular']
+        telefonoFijo= request.form['telefono_fijo']
+        municipio=request.form['municipio']
+        barrioVereda= request.form['barrio_vereda']
+        direccion = request.form['direccion']
+        estrato=request.form['estrato_residencia']
+        educacion = request.form['nivel_educativo']
+        discapacidad = request.form['discapacidad']
+        conectividad = request.form['conectividad_internet']
+        accesoTecnologia = request.form['acceso_tecnologico']
+        cualAccTecnol = request.form['dispositivos_tecnologicos']
+        regimen = request.form['regimen_afiliacion']
+        email = request.form['email']
+        password= request.form['contrasenia']
+
         cur=mysql.connection.cursor()
-        cur.execute('INSERT INTO ciudadano(tipodocumento,nombre,sexo,fechanacimiento,telefonos,apellidos) VALUES(%s,%s,%s,%s,%s,%s)',(documento,nombres,sexo,fechanacimiento,telefono,apellidos))
+        cur.execute('INSERT INTO ciudadanos(tipoDocumento,numeroDocumento,nombres,apellidos,sexo,fechaNacimiento,telefonoCelular,telefonoFijo,nivelEducativo,conectividad,etnia,dicapacidad,dispositivosTecnologicos,cualesDispTecn,regimenAfiliacion,municipio,barrioVereda,direccion,estrato,email,contraseña) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',(tipodocumento,documento,nombres,apellidos,sexo,fechanacimiento,telefonoCelular,telefonoFijo,educacion,conectividad,etnia,discapacidad,accesoTecnologia,cualAccTecnol,regimen,municipio,barrioVereda,direccion,estrato,email,password))
         mysql.connection.commit()
         flash('Ciudadano Agregado')
         return redirect(url_for('index'))

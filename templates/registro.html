@@ -1,12 +1,3 @@
-<!-- Que es esto? -->
-{%with messages=get_flashed_messages()%}
-{%if messages%}
-{%for message in messages%}      
-<h2>{{message}}</h2>
-{%endfor%}
-{%endif%}
-{%endwith%}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,11 +21,11 @@
                 <!-- Campo de tipo de documento -->
                 <label for="tipodocumento">Tipo de documento:</label>
                 <br>
-                <select id="tipo_documento" name="Tipo de documento">
+                <select id="tipo_documento" name="TipoDocumento">
                     <option selected>Selecciona una opción</option>
-                    <option value="cedula">Cédula de ciudadanía</option>
-                    <option value="tarjeta">Tarjeta de identidad</option>
-                    <option value="cedula extranjeria">Cédula Extranjería</option>
+                    <option value="Cédula ciudadanía">Cédula de ciudadanía</option>
+                    <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                    <option value="Cédula Extranjería">Cédula Extranjería</option>
                 </select>
 
                 <!-- Campo de nombres -->
@@ -73,7 +64,7 @@
                 <!-- Nivel educativo -->
                 <label for="nivel_educativo">Nivel Educativo:</label>
                 <br>
-                <input type="text" id="nivel_educativo" name="nivel_educativo" placeholder="Ej: Bachillerato" readonly>
+                <input type="text" id="nivel_educativo" name="nivel_educativo" placeholder="Ej: Bachillerato" required>
                 <br>
 
                 <!-- Conectividad a internet -->
@@ -182,7 +173,7 @@
             <div class="col-lg-6">
                 <label for="password">Contraseña:</label>
                 <br>
-                <input type="password" id="contraseña" name="contraseña"placeholder="Digite su contraseña" minlength="6" maxlength="10" required>
+                <input type="password" id="contraseña" name="contrasenia"placeholder="Digite su contraseña" minlength="6" maxlength="10" required>
                 <br>
             </div>
         </div>
