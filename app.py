@@ -13,14 +13,20 @@ mysql=MySQL(app)
 '''Settings'''
 app.secret_key='mysecretkey'
 
+
+'''Ruta para el index'''
 @app.route('/index')
+
 def index():
-    '''Se establece la funcion para la ruta del index'''
+    '''Se establece la función para la ruta del index'''
     return render_template('index.html')#Devolvera el template index.html
 
+
+'''Ruta para el registro'''
 @app.route('/registro', methods=['GET','POST'])
+
 def registro():
-    '''Funcion para el registro de ciudadanos'''
+    '''Función para el registro de ciudadanos'''
     if request.method == 'POST':
         tipodocumento = request.form['TipoDocumento']
         documento = request.form['numero_documento']
@@ -52,10 +58,11 @@ def registro():
     return render_template('registro.html')
 
 
-
+'''Ruta para el login'''
 @app.route('/login', methods=['GET','POST'])
+
 def login():
-    '''Funcion para el ingreso de usuarios(ciudadanos y administradores)'''
+    '''Función para el ingreso de usuarios(ciudadanos y administradores)'''
     if request.method == 'POST' and 'email' in request.form and 'contrasenia':
         email=request.form['email']
         password=request.form['contrasenia']
@@ -72,6 +79,18 @@ def login():
             flash('Email y/o contraseña incorrecta')#Si no, le saldra un mensaje de validacion y lo redirigirá al login de nuevo 
             return render_template('login.html')
     return render_template('login.html')
+
+@app.route('/home')
+def home():
+    '''Función para el home'''
+    return render_template('home.html')
+
+
+@app.route('/home/sondeos')
+def sondeos():
+    '''Función para los sondeos'''
+    return render_template('sondeos.html')
+
 
 if __name__=='__main__':
     #Se verifica que se este corriendo la aplicacion.
