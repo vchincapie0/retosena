@@ -20,10 +20,12 @@
                 <button type="submit">Ingresar</button>
             </form>
 
+
+            <!--Estos son los mensajes de validacion, despues los puedes poner dentro el formulario-->
             {%with messages=get_flashed_messages()%}
                 {%if messages%}
                 {%for message in messages%}      
-                <h2>{{message}}</h2>
+                <p>{{message}}</p>
                 {%endfor%}
                 {%endif%}
                 {%endwith%}

@@ -55,7 +55,7 @@ def registro():
 
 @app.route('/login', methods=['GET','POST'])
 def login():
-    '''Funcion para el ingreso de usuarios'''
+    '''Funcion para el ingreso de usuarios(ciudadanos y administradores)'''
     if request.method == 'POST' and 'email' in request.form and 'contrasenia':
         email=request.form['email']
         password=request.form['contrasenia']
@@ -67,9 +67,9 @@ def login():
         if account:
             session['Logueado']=True
 
-            return redirect(url_for('index'))
+            return redirect(url_for('index'))#si el usuario ingresa correctamente lo redireccionara al home
         else:
-            flash('Usuario y/o contraseña incorrecta')
+            flash('Email y/o contraseña incorrecta')#Si no, le saldra un mensaje de validacion y lo redirigirá al login de nuevo 
             return render_template('login.html')
     return render_template('login.html')
 
