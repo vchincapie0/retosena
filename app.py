@@ -61,7 +61,7 @@ def login():
         password=request.form['contrasenia']
 
         cur = mysql.connection.cursor()
-        cur.execute('SELECT * FROM ciudadanos where email=%s AND contraseña=%s',(email,password,))
+        cur.execute('SELECT * FROM ciudadanos,administradores where ciudadanos.email=%s AND ciudadanos.contraseña=%s OR administradores.email=%s AND administradores.contraseña=%s',(email,password,email,password))
         account = cur.fetchone()
 
         if account:
