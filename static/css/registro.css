@@ -1,0 +1,104 @@
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');  
+
+/* Variables */
+
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Roboto';
+    font-weight: 700;
+}
+
+p,a,button,label,input{
+    font-family: 'Roboto';
+    font-size: var(--fontS-parra);
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+:root{
+    --primary-color: #FFD15C;
+    --secondary-color: #000;
+    --fontS-titulo: 30px;
+    --fontS-subtitulos: 20px;
+    --fontS-parra: 16px; 
+}
+
+/* Estilo de formularios */
+header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+}
+
+h1{
+    color: var(--primary-color);
+    font-size: var(--fontS-titulo);
+}
+
+h5 {
+    color: var(--primary-color); 
+    border-bottom: 3px solid var(--primary-color); /* Línea de los h5 al lado */
+    padding-bottom: 5px; 
+    margin-top: 20px !important;
+    font-size: var(--fontS-subtitulos); 
+}
+
+label {
+    color: #666; 
+    margin-top: 10px; 
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+select {
+    width: 100%; 
+    border: none; 
+    border-bottom: 1px solid #666; 
+    padding: 5px 0; 
+    margin-top: 5px; 
+    color: #323232;
+}
+
+input[type="date"] {
+    appearance: none; /* Oculta el estilo nativo del navegador */
+    background-color: white; 
+    border: 2px solid #c6c6c6; 
+    border-radius: 5px; 
+    padding: 8px; 
+    width: 100%; 
+    color: #666;
+}
+
+input::placeholder,
+select::placeholder {
+    color: #c6c6c6; 
+}
+
+/* Botones styles */
+
+/* Boton de submit */
+button[type="submit"]{
+    background: var(--primary-color);
+    color: var(--secondary-color);
+    font-weight: 400;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px; 
+    cursor: pointer; 
+}
+
+
+
+
