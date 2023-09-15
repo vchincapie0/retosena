@@ -74,7 +74,7 @@ def login():
         if account:
             session['Logueado']=True
 
-            return redirect(url_for('index'))#si el usuario ingresa correctamente lo redireccionara al home
+            return redirect(url_for('home'))#si el usuario ingresa correctamente lo redireccionara al home
         else:
             flash('Email y/o contraseña incorrecta')#Si no, le saldra un mensaje de validacion y lo redirigirá al login de nuevo 
             return render_template('login.html')
