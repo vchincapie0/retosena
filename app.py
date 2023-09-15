@@ -13,7 +13,7 @@ mysql=MySQL(app)
 '''Settings'''
 app.secret_key='mysecretkey'
 
-@app.route('/')
+@app.route('/index')
 def index():
     '''Se establece la funcion para la ruta del index'''
     return render_template('index.html')#Devolvera el template index.html
