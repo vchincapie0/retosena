@@ -20,4 +20,119 @@ p,a,button,label,input{
     --fontS-parra: 16px; 
 }
 
+/* Estilos generales */
+body {
+    background-color: #ffd15caf;
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Contenedor del formulario */
+.col-lg-5 {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Estilos del formulario */
+form {
+    text-align: left;
+}
+
+label {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* Estilos de los input con línea inferior */
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px 0; 
+    margin-bottom: 20px;
+    border: none;
+    border-bottom: 2px solid #ccc; 
+    font-size: 16px;
+    outline: none; 
+    transition: border-color 0.3s ease; 
+}
+
+/* Cambio de estilo al hacer clic (:focus) */
+input[type="email"]:focus,
+input[type="password"]:focus {
+    border-bottom: 2px solid var(--primary-color); 
+}
+
+button[type="submit"] {
+    display: block; 
+    margin: 10px auto;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-weight: 500;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #f6b920;
+    color: #fff;
+}
+
+/* Estilos de imágenes y logotipos */
+img {
+    border-radius: 5px;
+    max-width: 100%;
+}
+
+/* Estilos de mensajes de validación */
+p {
+    color: var(--secondary-color);
+    margin-top: 10px;
+}
+
+
+h2 {
+    font-size: 30px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color:var(--primary-color);
+}
+
+/* Estilos para el mensaje "¿No tienes una cuenta? Click aquí para registrarte." */
+p.msj {
+    font-size: 14px;
+    color: #555;
+    text-align: left;
+
+}
+
+p.msj a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+p.msj a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .col-lg-5 {
+        width: 100%;
+    }
+}
+
 
