@@ -9,32 +9,42 @@
     <title>Log in | Inicio de sesión</title>
 </head>
 <body>
-    <title>Ingreso</title>
-</head>
-<body>
-    <div>
-        <div class="cont-principal">
-            <form class="form-control" action="login" method="post">
-                <h2>Formulario Login</h2>
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Digite su correo electronico" required>
 
-                <label for="password">Contraseña</label>
-                <input type="password" id="contraseña" name="contrasenia"placeholder="Digite su contraseña" minlength="6" maxlength="10" required>
-                <button type="submit">Ingresar</button>
-            </form>
-
-
-            <!--Estos son los mensajes de validacion, despues los puedes poner dentro el formulario-->
-            {%with messages=get_flashed_messages()%}
+    <main>
+        <section>
+            <div class="row">
+                <div class="col-lg-5">
+                    <img src="{{url_for('static', filename='img/Logo.png')}}" alt="Logo">
+                    <h2>Formulario Login</h2>
+                    <form class="form-control" action="login" method="post">        
+                        <label for="email">Email</label>
+                        <br>
+                        <input type="email" id="email" name="email" placeholder="Digite su correo electronico" required>
+                        <br>
+                        <label for="password">Contraseña</label>
+                        <br>
+                        <input type="password" id="contraseña" name="contrasenia"placeholder="Digite su contraseña" minlength="6" maxlength="10" required>
+                        <br>
+                        <button type="submit">Ingresar</button>
+                    </form>
+                </div>
+                <div class="col-lg-7">
+                    <img src="{{url_for('static', filename='img/Img.png')}}" alt="">
+                </div>
+                <!--Estos son los mensajes de validacion, despues los puedes poner dentro el formulario-->
+                {%with messages=get_flashed_messages()%}
                 {%if messages%}
                 {%for message in messages%}      
                 <p>{{message}}</p>
                 {%endfor%}
                 {%endif%}
                 {%endwith%}
-        </div>
-    </div>
+            </div>
+        </section>
+    </main>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>  
 </body>
 </html>
+
+
