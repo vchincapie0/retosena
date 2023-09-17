@@ -16,6 +16,17 @@
                 <div class="col-lg-5">
                     <img src="{{url_for('static', filename='img/Logo.png')}}" alt="Logo" id="Logo">
                     <h2>¡Bienvenido de nuevo!</h2>
+                    {%with messages=get_flashed_messages()%}
+                    {%if messages%}
+                    {%for message in messages%}   
+                    <div class="alert alert-warning d-flex align-items-center" role="alert">
+                        <div class="fa-solid fa-triangle-exclamation">
+                          {{message}}
+                        </div>
+                      </div>   
+                    {%endfor%}
+                    {%endif%}
+                    {%endwith%}
                     <form class="form-control" action="login" method="post">        
                         <label for="email">Email:</label>
                         <br>
@@ -34,17 +45,10 @@
                     <img src="{{url_for('static', filename='img/Img.png')}}" alt="ImgBg" id="ImgBg">
                 </div>
                 <!--Estos son los mensajes de validacion, despues los puedes poner dentro el formulario-->
-                {%with messages=get_flashed_messages()%}
-                {%if messages%}
-                {%for message in messages%}      
-                <p>{{message}}</p>
-                {%endfor%}
-                {%endif%}
-                {%endwith%}
             </div>
         </section>
     </main>
-
+    <script src="https://kit.fontawesome.com/909a90592e.js" crossorigin="anonymous"></script>    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>  
 </body>
 </html>
