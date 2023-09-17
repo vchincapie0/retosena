@@ -54,7 +54,7 @@ def registro():
         cur.execute('INSERT INTO ciudadanos(tipoDocumento,numeroDocumento,nombres,apellidos,sexo,fechaNacimiento,telefonoCelular,telefonoFijo,nivelEducativo,conectividad,etnia,dicapacidad,dispositivosTecnologicos,cualesDispTecn,regimenAfiliacion,municipio,barrioVereda,direccion,estrato,email,contraseña) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)',(tipodocumento,documento,nombres,apellidos,sexo,fechanacimiento,telefonoCelular,telefonoFijo,educacion,conectividad,etnia,discapacidad,accesoTecnologia,cualAccTecnol,regimen,municipio,barrioVereda,direccion,estrato,email,password))
         mysql.connection.commit()
         flash('Ciudadano Agregado')
-        return redirect(url_for('index'))#Una vez el ciudadano este registrado se redirecciona al index
+        return redirect(url_for('home'))#Una vez el ciudadano este registrado se redirecciona al index
     return render_template('registro.html')
 
 
