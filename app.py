@@ -100,9 +100,26 @@ def admin():
     '''Funcion para el home de administrador'''
     return render_template('admin.html')
 
-@app.route('/admin/sondeos')
+@app.route('/admin/sondeos', methods=['GET','POST'])
 def crear_sondeos():
     '''Funcion para que el administrador cree sondeos'''
+    if request.method == 'POST':
+        nombre = request.form['nombre']
+        fechainicio = request.form['fechainicio']
+        fechafinal = request.form['fechafinal']
+        genero = request.form['genero']
+        fechanacimiento = request.form['fechanacimiento']
+        numpregunta = request.form['numpregunta']
+        pregunta = request.form['pregunta']
+        tipopregunta = request.form['tipopregunta']
+
+        cur=mysql.connection.cursor()
+        cur.execute('INSERT INTO sondeos(nombreSondeo,fechaCreacion,fechaFinalizacion,edad,genero) VALUES(%s,%s,%s,%s,%s)',(nombre,fechainicio,fechafinal,fechanacimiento,genero))
+        cur.execute('INSERT INTO preguntassondeos(numpregunta,pregunta,tipopregunta) VALUES(%s,%s,%s)',(numpregunta,pregunta,tipopregunta))
+        mysql.connection.commit()
+        flash('Sondeo Creado Satisfactoriamente')
+        return redirect(url_for('admin'))
+        
     return render_template('crear.html')
 
 
