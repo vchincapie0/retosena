@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect,url_for,flash,session
 from flask_mysqldb import MySQL 
+from flask_login import logout_user,login_required
 
 app = Flask(__name__)#Se especifica que este archivo es el que va a iniciar la webapp
 
@@ -15,7 +16,7 @@ app.secret_key='mysecretkey'
 
 
 '''Ruta para el index'''
-@app.route('/index')
+@app.route('/')
 
 def index():
     '''Se establece la función para la ruta del index'''
@@ -80,6 +81,13 @@ def login():
             return render_template('login.html')
     return render_template('login.html')
 
+@app.route('/logout')
+def logout():
+    # Elimina la sesión del usuario
+    session.clear()
+    flash('Has cerrado sesion exitosamente', 'success')
+    return redirect(url_for('login'))  # Redirige a la página de inicio de sesión
+
 @app.route('/home')
 def home():
     '''Función para el home'''
@@ -90,7 +98,6 @@ def home():
 def sondeos():
     '''Función para los sondeos'''
     return render_template('sondeos.html')
-
 
 if __name__=='__main__':
     #Se verifica que se este corriendo la aplicacion.
