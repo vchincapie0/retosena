@@ -69,7 +69,7 @@ def login():
         password=request.form['contrasenia']
 
         cur = mysql.connection.cursor()
-        cur.execute('SELECT * FROM ciudadanos,administradores where ciudadanos.email=%s AND ciudadanos.contraseña=%s OR administradores.email=%s AND administradores.contraseña=%s',(email,password,email,password))
+        cur.execute('SELECT * FROM ciudadanos where ciudadanos.email=%s AND ciudadanos.contraseña=%s',(email,password))
         account = cur.fetchone()
 
         if account:
@@ -78,9 +78,19 @@ def login():
 
             flash('Bienvenido')
             return redirect(url_for('home'))#si el usuario ingresa correctamente lo redireccionara al home
+
         else:
-            flash('Datos incorrectos')#Si no, le saldra un mensaje de validacion y lo redirigirá al login de nuevo 
-            return render_template('login.html')
+            cur = mysql.connection.cursor()
+            cur.execute('SELECT * FROM administradores where administradores.email=%s AND administradores.contraseña=%s',(email,password))
+            admin = cur.fetchone()
+
+            if admin:
+                session['Logueado']=True
+                flash('Bienvenido usuario administrador')
+                return redirect(url_for('admin'))#si el usuario ingresa correctamente lo redireccionara al home
+            else:
+                flash('Datos incorrectos')#Si no, le saldra un mensaje de validacion y lo redirigirá al login de nuevo 
+                return render_template('login.html')
     return render_template('login.html')
 
 @app.route('/logout')
@@ -95,6 +105,9 @@ def home():
     '''Función para el home'''
     return render_template('home.html')
 
+@app.route('/admin')
+def admin():
+    return render_template('admin.html')
 
 @app.route('/home/sondeos')
 def sondeos():
