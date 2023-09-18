@@ -118,10 +118,14 @@ def crear_sondeos():
         cur.execute('INSERT INTO preguntassondeos(numpregunta,pregunta,tipopregunta) VALUES(%s,%s,%s)',(numpregunta,pregunta,tipopregunta))
         mysql.connection.commit()
         flash('Sondeo Creado Satisfactoriamente')
-        return redirect(url_for('admin'))
-        
+        return redirect(url_for('admin'))#Una vez el admin crea el sondeo, los datos son almacenados en bd y se le redirige al /admin
     return render_template('crear.html')
 
+
+@app.route('/eliminar', methods=['GET','POST'])
+def eliminar():
+    '''Funcion para eliminar preguntas al momento de la creacion del sondeo'''
+    return redirect(url_for('crear.html'))
 
 
 if __name__=='__main__':
