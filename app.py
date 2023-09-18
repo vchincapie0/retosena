@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect,url_for,flash,session
 from flask_mysqldb import MySQL 
-from flask_login import logout_user,login_required
 
 app = Flask(__name__)#Se especifica que este archivo es el que va a iniciar la webapp
 
