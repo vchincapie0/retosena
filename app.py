@@ -74,11 +74,14 @@ def login():
         if account:
             session['Logueado']=True
 
+
+            flash('Bienvenido')
             return redirect(url_for('home'))#si el usuario ingresa correctamente lo redireccionara al home
         else:
             flash('Datos incorrectos')#Si no, le saldra un mensaje de validacion y lo redirigirá al login de nuevo 
             return render_template('login.html')
     return render_template('login.html')
+
 
 @app.route('/home')
 def home():
@@ -90,6 +93,18 @@ def home():
 def sondeos():
     '''Función para los sondeos'''
     return render_template('sondeos.html')
+
+
+@app.route('/admin')
+def admin():
+    '''Funcion para el home de administrador'''
+    return render_template('admin.html')
+
+@app.route('admin/sondeos')
+def crear_sondeos():
+    '''Funcion para que el administrador cree sondeos'''
+    return render_template('crear.html')
+
 
 
 if __name__=='__main__':
