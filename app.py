@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect,url_for,flash,session
 from flask_mysqldb import MySQL 
+from flask_login import logout_user,login_required
 
 app = Flask(__name__)#Se especifica que este archivo es el que va a iniciar la webapp
 
@@ -15,7 +16,7 @@ app.secret_key='mysecretkey'
 
 
 '''Ruta para el index'''
-@app.route('/index')
+@app.route('/')
 
 def index():
     '''Se establece la función para la ruta del index'''
@@ -82,6 +83,12 @@ def login():
             return render_template('login.html')
     return render_template('login.html')
 
+@app.route('/logout')
+def logout():
+    # Elimina la sesión del usuario
+    session.clear()
+    flash('Has cerrado sesion exitosamente', 'success')
+    return redirect(url_for('login'))  # Redirige a la página de inicio de sesión
 
 @app.route('/home')
 def home():
@@ -93,39 +100,6 @@ def home():
 def sondeos():
     '''Función para los sondeos'''
     return render_template('sondeos.html')
-
-
-@app.route('/admin')
-def admin():
-    '''Funcion para el home de administrador'''
-    return render_template('admin.html')
-
-@app.route('/admin/sondeos', methods=['GET','POST'])
-def crear_sondeos():
-    '''Funcion para que el administrador cree sondeos'''
-    if request.method == 'POST':
-        nombre = request.form['nombre']
-        fechainicio = request.form['fechainicio']
-        fechafinal = request.form['fechafinal']
-        genero = request.form['genero']
-        fechanacimiento = request.form['fechanacimiento']
-        numpregunta = request.form['numpregunta']
-        pregunta = request.form['pregunta']
-        tipopregunta = request.form['tipopregunta']
-
-        cur=mysql.connection.cursor()
-        cur.execute('INSERT INTO sondeos(nombreSondeo,fechaCreacion,fechaFinalizacion,edad,genero) VALUES(%s,%s,%s,%s,%s)',(nombre,fechainicio,fechafinal,fechanacimiento,genero))
-        cur.execute('INSERT INTO preguntassondeos(numpregunta,pregunta,tipopregunta) VALUES(%s,%s,%s)',(numpregunta,pregunta,tipopregunta))
-        mysql.connection.commit()
-        flash('Sondeo Creado Satisfactoriamente')
-        return redirect(url_for('admin'))#Una vez el admin crea el sondeo, los datos son almacenados en bd y se le redirige al /admin
-    return render_template('crear.html')
-
-
-@app.route('/eliminar', methods=['GET','POST'])
-def eliminar():
-    '''Funcion para eliminar preguntas al momento de la creacion del sondeo'''
-    return redirect(url_for('crear.html'))
 
 
 if __name__=='__main__':

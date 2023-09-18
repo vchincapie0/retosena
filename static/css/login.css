@@ -128,6 +128,12 @@ p.msj a:hover {
     text-decoration: underline;
 }
 
+/* Styles para el Volver al inicio */
+
+ a.init{
+    color: #555;
+}
+
 /* Responsive Styles */
 @media (max-width: 768px) {
     .col-lg-5 {
