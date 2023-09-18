@@ -100,7 +100,7 @@ def admin():
     '''Funcion para el home de administrador'''
     return render_template('admin.html')
 
-@app.route('admin/sondeos')
+@app.route('/admin/sondeos')
 def crear_sondeos():
     '''Funcion para que el administrador cree sondeos'''
     return render_template('crear.html')
