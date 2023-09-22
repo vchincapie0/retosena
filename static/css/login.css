@@ -28,18 +28,18 @@ body {
 }
 
 main {
-    display: flex;
-    justify-content: center;
     align-items: center;
+    display: flex;
     height: 100vh;
+    justify-content: center;
 }
 
 /* Contenedor del formulario */
 .col-lg-5 {
     background-color: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    padding: 20px;
     border-radius: 5px;
+    padding: 20px;
     text-align: center;
 }
 
@@ -129,9 +129,14 @@ p.msj a:hover {
 }
 
 /* Styles para el Volver al inicio */
-
- a.init{
-    color: #555;
+a.ini {
+    display: block;
+    color: var(--primary-color);
+    position: relative;
+    margin-top: 20px;
+    text-decoration: none;
+    font-weight: bold;
+    text-align: center; 
 }
 
 /* Responsive Styles */

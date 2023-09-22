@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Enlace de Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+
+    <!-- Enlace de icono pestaña-->
+    <link rel="icon" href="{{url_for('static', filename='img/logo1.png')}}" sizes="48x48">
+
+    <!-- Enlace de style css-->
+    <link rel="stylesheet" href="{{url_for ('static', filename='css/admin.css')}}">
+
+    <title> Home | Admin </title>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg bg-parci">
+            <a class="navbar-brand" href="/incio"><img src="{{url_for('static', filename='img/Logo.png')}}" alt="Logo"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Inicio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/admin/sondeos">Crear Sondeos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Asignacion de roles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Ayuda</a>
+                    </li>
+                    <li class="nav-item cerrar" >
+                        <a class="nav-link" href="{{ url_for('logout') }}">Cerrar Sesión</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    {%with messages=get_flashed_messages()%}
+    {%if messages%}
+    {%for message in messages%}   
+        <div class="alert alert-success d-flex align-items-center" role="alert">
+            <div class="fa-solid fa-check-double">
+                {{message}}
+            </div>
+        </div>   
+    {%endfor%}
+    {%endif%}
+    {%endwith%}
+
+
+    <!-- Enlace de Font awesome -->
+    <script src="https://kit.fontawesome.com/909a90592e.js" crossorigin="anonymous"></script>  
+    
+    <!-- Enlace de Bootstrap -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>  
+
+</body>
+</html>

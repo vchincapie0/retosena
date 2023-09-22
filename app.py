@@ -102,18 +102,18 @@ def logout():
 @app.route('/home')
 def home():
     '''Función para el home'''
-    return render_template('home.html')
+    return render_template('Ciudadano/home.html')
 
 
 @app.route('/home/sondeos')
 def sondeos():
     '''Función para los sondeos'''
-    return render_template('sondeos.html')
+    return render_template('Ciudadano/sondeos.html')
 
 
 @app.route('/admin')
 def admin():
-    return render_template('admin.html')
+    return render_template('Admin/admin.html')
 
 
 @app.route('/admin/sondeos', methods=['GET','POST'])
@@ -136,13 +136,13 @@ def crear_sondeos():
         return redirect(url_for('admin'))#Una vez el admin crea el sondeo, los datos son almacenados en bd y se le redirige al /admin
 
          
-    return render_template('crear.html')
+    return render_template('Admin/crear.html')
 
 
 @app.route('/eliminar', methods=['GET','POST'])
 def eliminar():
     '''Funcion para eliminar preguntas al momento de la creacion del sondeo'''
-    return redirect(url_for('crear.html'))
+    return redirect(url_for('Admin/crear.html'))
 
 
 if __name__=='__main__':

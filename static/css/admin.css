@@ -1,0 +1,50 @@
+/* Fuentes */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');  
+
+/* Variables */
+
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Roboto';
+    font-weight: 700;
+}
+
+p,a,button,label,input{
+    font-family: 'Roboto';
+}
+
+:root{
+    --primary-color: #FFD15C;
+    --secondary-color: #000;
+    --fontS-titulo: 30px;
+    --fontS-subtitulos: 22px;
+    --fontS-parra: 16px; 
+}
+
+/* Estilos barra de navegacion */
+
+nav.bg-parci{
+    background-color: var(--bg-body);
+    width: 100%;
+    z-index: 999;
+    padding: 20px 0;
+    justify-content: space-around;
+}
+
+nav .navbar-brand img{
+    width: 200px;
+    margin-left: 100px;
+}
+
+nav.bg-parci ul li{
+    margin: 0 10px;
+    color: #000;
+    font-weight: 500;
+}
+
+nav.bg-parci ul li:hover{
+    border-bottom: 3px solid #FFD15C;
+}
+
+nav.bg-parci ul li.cerrar{
+    margin-left: 200px;
+}
