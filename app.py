@@ -113,6 +113,10 @@ def sondeos():
 
 @app.route('/admin')
 def admin():
+    cur=mysql.connection.cursor()
+    cur.execute('SELECT * FROM sondeos')
+    sondeos = cur.fetchall()
+    return render_template('index.html', sondeos=sondeos)
     return render_template('admin.html')
 
 
@@ -121,16 +125,15 @@ def crear_sondeos():
     '''Funcion para que el administrador cree sondeos'''
     if request.method == 'POST':
         nombre = request.form['nombre']
+        pregunta = request.form['pregunta']
+        opciones = request.form['opciones']
         fechainicio = request.form['fechainicio']
         fechafinal = request.form['fechafinal']
-        genero = request.form['genero']
         fechanacimiento = request.form['fechanacimiento']
-        numpregunta = request.form['numpregunta']
-        pregunta = request.form['pregunta']
-        tipopregunta = request.form['tipopregunta']
+        genero = request.form['genero']
+        
         cur=mysql.connection.cursor()
-        cur.execute('INSERT INTO sondeos(nombreSondeo,fechaCreacion,fechaFinalizacion,edad,genero) VALUES(%s,%s,%s,%s,%s)',(nombre,fechainicio,fechafinal,fechanacimiento,genero))
-        cur.execute('INSERT INTO preguntassondeos(numpregunta,pregunta,tipopregunta) VALUES(%s,%s,%s)',(numpregunta,pregunta,tipopregunta))
+        cur.execute('INSERT INTO sondeos(nombreSondeo,preguntas,opciones,fechaCreacion,fechaFinalizacion,edad,genero) VALUES(%s,%s,%s,%s,%s,%s,%s)',(nombre,pregunta,opciones,fechainicio,fechafinal,fechanacimiento,genero))
         mysql.connection.commit()
         flash('Sondeo Creado Satisfactoriamente')
         return redirect(url_for('admin'))#Una vez el admin crea el sondeo, los datos son almacenados en bd y se le redirige al /admin
